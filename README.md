@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1f6feb,100:0969da&height=180&section=header&text=Sajin%20Sarosh%20S&fontSize=38&fontColor=ffffff&fontAlignY=38&desc=Junior%20DevOps%20Engineer%20%7C%20Cloud%20%26%20Automation&descSize=16&descAlignY=58&descColor=d0d7de" width="100%" />
+  <img src="./assets/banner.svg" alt="Sajin Sarosh S - Junior DevOps Engineer" width="100%" />
 
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&pause=1000&color=2F81F7&center=true&vCenter=true&width=550&lines=Junior+DevOps+Engineer;AWS+%7C+Docker+%7C+CI%2FCD+Pipelines;Linux+Administration+%26+Automation;Python+%26+Bash+Scripting" alt="Typing SVG" />
