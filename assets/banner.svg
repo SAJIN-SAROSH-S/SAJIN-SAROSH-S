@@ -1,83 +1,188 @@
 ﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 200" width="100%" height="100%">
   <defs>
+    <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0d1117" />
-      <stop offset="50%" stop-color="#161b22" />
+      <stop offset="60%" stop-color="#161b22" />
       <stop offset="100%" stop-color="#090d13" />
     </linearGradient>
+
+    <!-- Animated Ambient Light Gradient -->
+    <radialGradient id="ambientGlow" cx="25%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#388bfd" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Waves Gradients -->
     <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.35" />
-      <stop offset="50%" stop-color="#388bfd" stop-opacity="0.25" />
-      <stop offset="100%" stop-color="#238636" stop-opacity="0.3" />
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#388bfd" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#238636" stop-opacity="0.2" />
     </linearGradient>
+
     <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0969da" stop-opacity="0.6" />
-      <stop offset="50%" stop-color="#1f6feb" stop-opacity="0.75" />
-      <stop offset="100%" stop-color="#388bfd" stop-opacity="0.5" />
+      <stop offset="0%" stop-color="#0969da" stop-opacity="0.5" />
+      <stop offset="50%" stop-color="#1f6feb" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#2ea043" stop-opacity="0.45" />
     </linearGradient>
+
     <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1f6feb" />
-      <stop offset="50%" stop-color="#2f81f7" />
-      <stop offset="100%" stop-color="#0969da" />
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#2f81f7" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0969da" stop-opacity="0.9" />
     </linearGradient>
-    <linearGradient id="iconGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#58a6ff" />
-      <stop offset="100%" stop-color="#1f6feb" />
+
+    <linearGradient id="nameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#79c0ff" />
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
+
+    <!-- Clip Path for Rounded Border -->
+    <clipPath id="cardClip">
+      <rect width="850" height="200" rx="14" ry="14" />
+    </clipPath>
+
+    <style>
+      @keyframes waveLeft {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-425px); }
+      }
+      @keyframes waveRight {
+        0% { transform: translateX(-425px); }
+        100% { transform: translateX(0); }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.25; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.05); }
+      }
+      @keyframes blinkCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      @keyframes livePing {
+        0% { r: 3px; opacity: 1; stroke-width: 1; }
+        70% { r: 9px; opacity: 0; stroke-width: 2; }
+        100% { r: 9px; opacity: 0; stroke-width: 0; }
+      }
+      @keyframes dataFlow {
+        0% { stroke-dashoffset: 24; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes serverStatusBlink {
+        0%, 100% { fill: #238636; }
+        50% { fill: #3fb950; }
+      }
+
+      .wave-1 {
+        animation: waveLeft 14s linear infinite;
+        will-change: transform;
+      }
+      .wave-2 {
+        animation: waveRight 10s linear infinite;
+        will-change: transform;
+      }
+      .wave-3 {
+        animation: waveLeft 7s linear infinite;
+        will-change: transform;
+      }
+      .ambient-pulse {
+        animation: pulseGlow 5s ease-in-out infinite;
+        transform-origin: 200px 100px;
+      }
+      .cursor-blink {
+        animation: blinkCursor 0.9s step-start infinite;
+      }
+      .live-ping {
+        animation: livePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        transform-origin: 32px 63px;
+      }
+      .flow-circuit {
+        stroke-dasharray: 4, 4;
+        animation: dataFlow 1.2s linear infinite;
+      }
+      .server-led {
+        animation: serverStatusBlink 1.8s ease-in-out infinite;
+      }
+    </style>
   </defs>
 
-  <!-- Background Base -->
-  <rect width="850" height="200" rx="12" fill="url(#bgGrad)" />
-  <rect width="850" height="200" rx="12" fill="none" stroke="#30363d" stroke-width="1.2" />
+  <!-- Enclosed Card with Rounded Clip -->
+  <g clip-path="url(#cardClip)">
+    <!-- Base Background -->
+    <rect width="850" height="200" fill="url(#bgGrad)" />
 
-  <!-- Background Grid Dots -->
-  <g opacity="0.12" fill="#8b949e">
-    <circle cx="320" cy="40" r="1.5"/><circle cx="360" cy="40" r="1.5"/><circle cx="400" cy="40" r="1.5"/><circle cx="440" cy="40" r="1.5"/>
-    <circle cx="320" cy="70" r="1.5"/><circle cx="360" cy="70" r="1.5"/><circle cx="400" cy="70" r="1.5"/><circle cx="440" cy="70" r="1.5"/>
-    <circle cx="320" cy="100" r="1.5"/><circle cx="360" cy="100" r="1.5"/><circle cx="400" cy="100" r="1.5"/><circle cx="440" cy="100" r="1.5"/>
-  </g>
+    <!-- Ambient Breathing Radial Glow -->
+    <circle cx="220" cy="100" r="180" fill="url(#ambientGlow)" class="ambient-pulse" />
 
-  <!-- Flowing Waves -->
-  <path d="M 0,145 Q 200,185 420,150 T 850,155 L 850,200 L 0,200 Z" fill="url(#waveGrad1)" />
-  <path d="M 0,160 Q 230,125 450,165 T 850,150 L 850,200 L 0,200 Z" fill="url(#waveGrad2)" />
-  <path d="M 0,175 Q 180,155 380,180 T 850,170 L 850,200 L 0,200 Z" fill="url(#waveGrad3)" />
+    <!-- Tech Circuit Decorative Pattern -->
+    <g opacity="0.1" fill="none" stroke="#8b949e" stroke-width="1">
+      <path d="M 400,20 L 460,20 L 480,40 L 560,40" />
+      <path d="M 350,60 L 410,60 L 430,80 L 500,80" />
+      <circle cx="560" cy="40" r="2.5" fill="#8b949e" />
+      <circle cx="500" cy="80" r="2.5" fill="#8b949e" />
+    </g>
 
-  <!-- Terminal Window Controls -->
-  <circle cx="40" cy="32" r="4.5" fill="#ff5f56"/>
-  <circle cx="54" cy="32" r="4.5" fill="#ffbd2e"/>
-  <circle cx="68" cy="32" r="4.5" fill="#27c93f"/>
+    <!-- ALIVE FLOWING WAVES LAYER 1 (Deepest) -->
+    <g class="wave-1">
+      <path d="M 0,135 Q 106.25,115 212.5,135 T 425,135 T 637.5,135 T 850,135 T 1062.5,135 T 1275,135 L 1275,210 L 0,210 Z" fill="url(#waveGrad1)" />
+    </g>
 
-  <!-- Badge Tag -->
-  <g transform="translate(40, 52)">
-    <rect width="215" height="22" rx="11" fill="#1f6feb" fill-opacity="0.18" stroke="#388bfd" stroke-width="1" stroke-opacity="0.6"/>
-    <circle cx="12" cy="11" r="3.5" fill="#388bfd"/>
-    <text x="24" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="600" fill="#58a6ff" letter-spacing="0.8">CLOUD &amp; DEVOPS SYSTEMS</text>
-  </g>
+    <!-- ALIVE FLOWING WAVES LAYER 2 (Mid-Level Reverse) -->
+    <g class="wave-2">
+      <path d="M 0,152 Q 106.25,132 212.5,152 T 425,152 T 637.5,152 T 850,152 T 1062.5,152 T 1275,152 L 1275,210 L 0,210 Z" fill="url(#waveGrad2)" />
+    </g>
 
-  <!-- Title & Subtitle -->
-  <text x="40" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="800" fill="#ffffff" letter-spacing="0.3">Sajin Sarosh S</text>
-  <text x="40" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="500" fill="#8b949e">Junior DevOps Engineer  |  Cloud Architecture &amp; CI/CD Automation</text>
+    <!-- ALIVE FLOWING WAVES LAYER 3 (Front Fast) -->
+    <g class="wave-3">
+      <path d="M 0,168 Q 106.25,152 212.5,168 T 425,168 T 637.5,168 T 850,168 T 1062.5,168 T 1275,168 L 1275,210 L 0,210 Z" fill="url(#waveGrad3)" />
+    </g>
 
-  <!-- Right Side Decorative Cloud / Server Icon -->
-  <g transform="translate(690, 42)" opacity="0.9">
-    <!-- Server Stack -->
-    <rect x="15" y="15" width="80" height="22" rx="5" fill="#161b22" stroke="#388bfd" stroke-width="1.2"/>
-    <circle cx="28" cy="26" r="3" fill="#388bfd"/>
-    <line x1="40" y1="26" x2="82" y2="26" stroke="#30363d" stroke-width="2" stroke-linecap="round"/>
+    <!-- Terminal Window Controls -->
+    <circle cx="40" cy="30" r="4.5" fill="#ff5f56"/>
+    <circle cx="54" cy="30" r="4.5" fill="#ffbd2e"/>
+    <circle cx="68" cy="30" r="4.5" fill="#27c93f"/>
 
-    <rect x="15" y="44" width="80" height="22" rx="5" fill="#161b22" stroke="#388bfd" stroke-width="1.2"/>
-    <circle cx="28" cy="55" r="3" fill="#238636"/>
-    <line x1="40" y1="55" x2="82" y2="55" stroke="#30363d" stroke-width="2" stroke-linecap="round"/>
+    <!-- Status Badge Tag with Pulsing Ping -->
+    <g transform="translate(40, 52)">
+      <rect width="215" height="22" rx="11" fill="#1f6feb" fill-opacity="0.18" stroke="#388bfd" stroke-width="1" stroke-opacity="0.6"/>
+      <!-- Outer live ping ring -->
+      <circle cx="12" cy="11" r="3" fill="none" stroke="#58a6ff" class="live-ping" />
+      <!-- Solid core dot -->
+      <circle cx="12" cy="11" r="3.5" fill="#388bfd"/>
+      <text x="24" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="700" fill="#58a6ff" letter-spacing="0.8">CLOUD &amp; DEVOPS SYSTEMS</text>
+    </g>
 
-    <rect x="15" y="73" width="80" height="22" rx="5" fill="#161b22" stroke="#388bfd" stroke-width="1.2"/>
-    <circle cx="28" cy="84" r="3" fill="#f0883e"/>
-    <line x1="40" y1="84" x2="82" y2="84" stroke="#30363d" stroke-width="2" stroke-linecap="round"/>
+    <!-- UPPERCASE NAME -->
+    <text x="40" y="115" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="900" fill="url(#nameGrad)" letter-spacing="1">SAJIN SAROSH S</text>
 
-    <!-- Connecting Link Line -->
-    <path d="M 55,95 L 55,108 Q 55,115 65,115 L 75,115" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <!-- Subtitle with Blinking Terminal Cursor -->
+    <text x="40" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#8b949e" letter-spacing="0.4">Junior DevOps Engineer  |  Cloud Architecture &amp; CI/CD Automation</text>
+    <rect x="532" y="130" width="7" height="14" fill="#388bfd" class="cursor-blink" rx="1" />
+
+    <!-- Right Side Decorative Server Stack with Live Data Pulse -->
+    <g transform="translate(685, 38)">
+      <!-- Server Unit 1 -->
+      <rect x="15" y="15" width="85" height="23" rx="5" fill="#161b22" stroke="#388bfd" stroke-width="1.2"/>
+      <circle cx="29" cy="26.5" r="3" fill="#238636" class="server-led"/>
+      <line x1="42" y1="26.5" x2="86" y2="26.5" stroke="#30363d" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Server Unit 2 -->
+      <rect x="15" y="44" width="85" height="23" rx="5" fill="#161b22" stroke="#388bfd" stroke-width="1.2"/>
+      <circle cx="29" cy="55.5" r="3" fill="#388bfd"/>
+      <line x1="42" y1="55.5" x2="86" y2="55.5" stroke="#30363d" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Server Unit 3 -->
+      <rect x="15" y="73" width="85" height="23" rx="5" fill="#161b22" stroke="#388bfd" stroke-width="1.2"/>
+      <circle cx="29" cy="84.5" r="3" fill="#f0883e"/>
+      <line x1="42" y1="84.5" x2="86" y2="84.5" stroke="#30363d" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Flowing Animated Circuit Connector -->
+      <path d="M 57,96 L 57,112 Q 57,120 68,120 L 82,120" fill="none" stroke="#58a6ff" stroke-width="1.5" class="flow-circuit"/>
+      <circle cx="82" cy="120" r="2.5" fill="#58a6ff" />
+    </g>
+
+    <!-- Outer Card Border -->
+    <rect width="850" height="200" rx="14" fill="none" stroke="#30363d" stroke-width="1.2" />
   </g>
 </svg>
