@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/banner.svg" alt="SAJIN SAROSH S - Junior DevOps Engineer" width="100%" />
+  <img src="./assets/banner.svg" alt="SAJIN SAROSH S - Junior AI Engineer" width="100%" />
 
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&pause=1000&color=2F81F7&center=true&vCenter=true&width=550&lines=Junior+DevOps+Engineer;AWS+%7C+Docker+%7C+CI%2FCD+Pipelines;Linux+Administration+%26+Automation;Python+%26+Bash+Scripting" alt="Typing SVG" />
@@ -18,7 +18,7 @@
 
 ### 🚀 About Me
 
-- 👨‍💻 **Role**: Junior DevOps Engineer focusing on cloud infrastructure, containerization, and automation.
+- 👨‍💻 **Role**: Junior AI Engineer focusing on cloud infrastructure, containerization, and automation.
 - 🐳 **Core Competencies**: Containerizing applications with **Docker**, configuring **CI/CD pipelines with GitHub Actions**, and managing **Linux** server environments.
 - ☁️ **Cloud**: Deploying and managing resources on **AWS**.
 - 🐍 **Scripting & Automation**: Writing automation and tooling scripts in **Python** and **Bash**.
