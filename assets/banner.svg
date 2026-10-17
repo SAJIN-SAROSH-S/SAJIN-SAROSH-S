@@ -157,7 +157,7 @@
     <text x="40" y="115" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="900" fill="url(#nameGrad)" letter-spacing="1">SAJIN SAROSH S</text>
 
     <!-- Subtitle with Blinking Terminal Cursor -->
-    <text x="40" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#8b949e" letter-spacing="0.4">Junior DevOps Engineer  |  Cloud Architecture &amp; CI/CD Automation</text>
+    <text x="40" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#8b949e" letter-spacing="0.4">Junior AI Engineer  |  Cloud Architecture &amp; CI/CD Automation</text>
     <rect x="532" y="130" width="7" height="14" fill="#388bfd" class="cursor-blink" rx="1" />
 
     <!-- Right Side Decorative Server Stack with Live Data Pulse -->
